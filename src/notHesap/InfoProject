@@ -1,16 +1,16 @@
 ----------Öğrenci Not Sistemi-----------
 
-----------Course Class Özellikleri :
+----------Course Class Özellikleri :// mustafa erdem ve mustafa yılmaz
 
 fields (variable) : name,code,prefix,note,Teacher--> ad, ünvan, notYazılı, notSozlu, öğretmen,
 Methods : Course() , addTeacher() , printTeacher()--> kurs(), öğretmenEkle(), öğretmenYazdır()
 
-----------Teacher Class Özellikleri :
+----------Teacher Class Özellikleri : //Abdullah
 
 fields : name,branch--> ad, branş
 Methods : Teacher()-->öğretmen()
 
-----------Student Class Özellikleri :
+----------Student Class Özellikleri : // zeynep, defne
 
 fields : name,stuNo,classes,course1,course2,course3
 Methods : Student(), addBulkExamNote(), isPass(), calcAvarage(), printNote()
