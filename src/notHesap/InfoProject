@@ -3,12 +3,12 @@
 ----------Course Class Özellikleri :// mustafa erdem ve mustafa yılmaz
 
 fields (variable) : name,code,prefix,note,Teacher--> ad, ünvan, notYazılı, notSozlu, öğretmen,
-Methods : Course() , addTeacher() , printTeacher()--> kurs(), öğretmenEkle(), öğretmenYazdır()
+Methods : Course() , -> kurs(), öğretmenEkle(), öğretmenYazdır()
 
 ----------Teacher Class Özellikleri : //Abdullah
 
 fields : name,branch--> ad, branş
-Methods : Teacher()-->öğretmen()
+Methods : Teacher()-->öğretmen() addTeacher() , printTeacher()-
 
 ----------Student Class Özellikleri : // zeynep, defne
 
@@ -20,6 +20,8 @@ Methods : Student(), addBulkExamNote(), isPass(), calcAvarage(), printNote()
 Course class'ında derse ait sözlü notu kısmını girin ve ortalamaya etkisini
 her ders için ayrı ayrı belirtin. Sözlü notlarınıda ortalamaya etkileme
 yüzdesi ile dahil edin.
+
+
 
 Örnek : Fizik dersine ait sözlü notunun ortalamaya etkisi %20 ise
 sınav notunun etkisi %80'dir.

@@ -1,5 +1,9 @@
 package notHesap;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Course {
 
     Teacher teacher;
@@ -8,7 +12,13 @@ public class Course {
     int noteYazili=0;
     int noteSozlu=0;
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getPrefix() {
         return prefix;

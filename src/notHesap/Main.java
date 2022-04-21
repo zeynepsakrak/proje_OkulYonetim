@@ -2,6 +2,7 @@ package notHesap;
 
 import static notHesap.Student.scan;
 import static notHesap.Student.studentPaneli;
+import static notHesap.Teacher.teacherPaneli;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +18,7 @@ public class Main {
                         "\t====================================\n" +
                         "\t 1- ÖĞRENCİ İŞLEMLERİ\n" +
                         "\t 2- ÖĞRETMEN İŞLEMLERİ\n" +
+                        "\t 3- COURSE İŞLEMLERİ\n" +
                         "\t Q- ÇIKIŞ"
                 );
                 System.out.print("Lütfen islemi giriniz: ");
@@ -27,9 +29,12 @@ public class Main {
                         studentPaneli();
                         break;
                     case "2":
-                        System.out.println("Öğretmen paneli");
+                        teacherPaneli();
                         break;
 
+                    case "3":
+                        System.out.println("COURSE paneli");
+                        break;
                 }
 
 

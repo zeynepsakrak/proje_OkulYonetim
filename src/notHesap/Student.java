@@ -53,6 +53,7 @@ public class Student {
                 break;
             case "5":
                 notlariYazdir();
+                studentPaneli();
                 break;
             case "6":
                 girisPaneli();
