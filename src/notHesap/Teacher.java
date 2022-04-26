@@ -1,38 +1,47 @@
 package notHesap;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+
+
+import java.util.*;
 import java.util.concurrent.SynchronousQueue;
 
 import static notHesap.Main.girisPaneli;
 
 public class Teacher {
 static  Scanner scan=new Scanner(System.in);
-    static List<Teacher> ogrtListesi = new ArrayList<>();
-    private String teacherId;
-    private String name;
-    private String branch;
+    static int teacherId=1;
+    //static String teacherId;
+    static String name;
+    static String branch;
+    public static Map<Integer, Teacher> teacherMap = new HashMap<Integer, Teacher>();
 
     public Teacher() {
 
     }
 
-    public Teacher(String teacherId, String name, String branch) {
-        this.teacherId = teacherId;
+    public Teacher(String name, String branch) {
+        //this.teacherId = teacherId;
         this.name = name;
         this.branch = branch;
     }
 
-    public String getTeacherId() {
+    public static int getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
+    public static void setTeacherId(int teacherId) {
+        Teacher.teacherId = teacherId;
     }
 
+    /*
+        public String getTeacherId() {
+            return teacherId;
+        }
+
+        public void setTeacherId(String teacherId) {
+            this.teacherId = teacherId;
+        }
+    */
     public String getName() {
         return name;
     }
@@ -52,8 +61,7 @@ static  Scanner scan=new Scanner(System.in);
     @Override
     public String toString() {
         return "Teacher{" +
-                "teacherId='" + teacherId + '\'' +
-                ", name='" + name + '\'' +
+                " name='" + name + '\'' +
                 ", branch='" + branch + '\'' +
                 '}';
     }
@@ -87,41 +95,35 @@ static  Scanner scan=new Scanner(System.in);
 
     private static void ogretmenyazdir() {
         System.out.println("   *** öğretmen arama sayfası   ***");
-        boolean flag = true;
-
-            System.out.println();
-            System.out.print("Aradıgınız Ogretmenin Id No giriniz : ");
-
-            String arananKimlikNo = scan.next();
-
-            for (Teacher k : ogrtListesi) {
-                if (k.getTeacherId().equals(arananKimlikNo)) {//flag havada
-                    System.out.println("Aradıgınız Ogretmen : " + k.getName());
-                    flag = false;
-                }
-
-            }
-            if (flag) {//flag inince
-                System.out.println("Aradıgınız Ogretmen mevcut değil ");
-
-            }
-
-
+       Set<Map.Entry<Integer, Teacher>> urunEntrySeti = teacherMap.entrySet();
+        System.out.println("------------ÖĞRETMEN LİSTESİ---------------");
+        System.out.println("id       ismi         branş"+
+                "\n--------------------------------------------");
+        for (Map.Entry<Integer, Teacher> e : urunEntrySeti
+        ) {
+            Integer entryKey = e.getKey();
+            System.out.printf("%-8d %-12s %-15s\n", entryKey, teacherMap.get(entryKey).getName(), teacherMap.get(entryKey).getBranch());
+        }
     }
 
     private static void ogretmenekle() {
         System.out.println("   ***  Ogretmen ekleme sayfası   ***");
-        System.out.print("Sicil No giriniz : ");
-        String teacherId = scan.nextLine();
-        scan.next();
+
+        //System.out.print("Sicil No giriniz : ");
+       // String teacherId = scan.next();
+
         System.out.print("bolum giriniz : ");
+        scan.nextLine();//dummy
         String branch = scan.nextLine();
-        scan.next();
+
         System.out.print("Ogretmenin Adini Soyadini giriniz : ");
         String name = scan.nextLine();
-        scan.next();
-        Teacher OgretmenEkle = new Teacher(teacherId, name, branch);
-        System.out.println(ogrtListesi);
+        //scan.next();
+       // Teacher OgretmenEkle = new Teacher(teacherId, name, branch);
+        Teacher  teacher = new Teacher(name,branch);//urun objesi oluşturuldu
+        teacherMap.put(teacherId,teacher); //map içerisine urunId key, urun objesi eklendi
+        System.out.println(teacherMap);
+        teacherId++;
     }
 
 }

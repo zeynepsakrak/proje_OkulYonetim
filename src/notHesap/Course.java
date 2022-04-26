@@ -12,6 +12,14 @@ public class Course {
     int noteYazili=0;
     int noteSozlu=0;
 
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
     public String getName() {
         return name;
     }
