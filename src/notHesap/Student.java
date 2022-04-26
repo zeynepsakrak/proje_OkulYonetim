@@ -71,6 +71,7 @@ public class Student {
         System.out.println("ortalamanız: "+genelOrt);
     }
 
+
     private static void notlariYazdir() {
         System.out.println("Mat yazili notu: " + mat.getNoteYazili());
         System.out.println("Mat sözlü notu: " + mat.getNoteSozlu());
