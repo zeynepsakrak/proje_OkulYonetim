@@ -4,7 +4,7 @@ import static notHesap.Student.scan;
 import static notHesap.Student.studentPaneli;
 import static notHesap.Teacher.teacherPaneli;
 
-public class Main {
+public class Main{
     public static void main(String[] args) {
         girisPaneli();
     }

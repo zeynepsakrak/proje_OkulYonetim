@@ -1,28 +1,21 @@
 package notHesap;
 
 import javax.xml.namespace.QName;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.*;
 
 import static notHesap.Main.girisPaneli;
+import static notHesap.depoStudent.*;
 
 public class Student {
-    String name;
-    String stuNo;
-    String classes;
-    static Course mat = new Course();
-    static Course tur = new Course();
-    static Course bio = new Course();
+
     //static Course mat;
     //static Course tur;
     //static Course bio;
     static Scanner scan = new Scanner(System.in);
     static List<String> ogrenciList = new ArrayList<>();
+    public static Map<String,depoStudent> ogrenciMap = new HashMap<String, depoStudent>();
 
-    public Student() {
-    }
+
 
     public static void studentPaneli() {
 
@@ -116,20 +109,25 @@ public class Student {
         not = scan.nextInt();
         tur.setNoteSozlu(not);
         System.out.println("Tur yazili notu: " + tur.getNoteYazili() + "\nTur sözlü notu: " + tur.getNoteSozlu());
+
+
     }
 
     private static <ogrenci> void student() {
         System.out.println("lütfen öğrenci bilgileri giriniz: ");
         System.out.println("isim giriniz");
         scan.nextLine();//bos dummy attık
-        String name = scan.nextLine();
+        name = scan.nextLine();
         System.out.println("öğrenci numarası giriniz giriniz");
-        int stuNo = scan.nextInt();
+        stuNo = scan.nextLine();
         System.out.println("sınıf giriniz");
-        scan.nextLine();//bos dummy attık
-        String classes = scan.nextLine();
-        ogrenciList.add("İsim: " + name + "\nNo: " + stuNo + "\nClasses: " + classes);
-        System.out.println(ogrenciList);
+        //scan.nextLine();//bos dummy attık
+        classes = scan.nextLine();
+
+        depoStudent ogrenci  = new depoStudent(stuNo,name,classes);//urun objesi oluşturuldu
+        ogrenciMap.put(stuNo,ogrenci);
+
+        System.out.println(ogrenciMap);
 
     }
 
