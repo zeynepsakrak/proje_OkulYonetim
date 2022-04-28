@@ -11,8 +11,8 @@ public class Teacher {
 static  Scanner scan=new Scanner(System.in);
     static int teacherId=1;
     //static String teacherId;
-    static String name;
-    static String branch;
+    private String name;
+    private String branch;
     public static Map<Integer, Teacher> teacherMap = new HashMap<Integer, Teacher>();
 
     public Teacher() {
@@ -25,23 +25,23 @@ static  Scanner scan=new Scanner(System.in);
         this.branch = branch;
     }
 
-    public static int getTeacherId() {
+    public int getTeacherId() {
         return teacherId;
     }
 
-    public static void setTeacherId(int teacherId) {
-        Teacher.teacherId = teacherId;
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
     }
 
     /*
-        public String getTeacherId() {
-            return teacherId;
-        }
+            public String getTeacherId() {
+                return teacherId;
+            }
 
-        public void setTeacherId(String teacherId) {
-            this.teacherId = teacherId;
-        }
-    */
+            public void setTeacherId(String teacherId) {
+                this.teacherId = teacherId;
+            }
+        */
     public String getName() {
         return name;
     }
@@ -108,18 +108,11 @@ static  Scanner scan=new Scanner(System.in);
 
     private static void ogretmenekle() {
         System.out.println("   ***  Ogretmen ekleme sayfası   ***");
-
-        //System.out.print("Sicil No giriniz : ");
-       // String teacherId = scan.next();
-
         System.out.print("bolum giriniz : ");
         scan.nextLine();//dummy
         String branch = scan.nextLine();
-
         System.out.print("Ogretmenin Adini Soyadini giriniz : ");
         String name = scan.nextLine();
-        //scan.next();
-       // Teacher OgretmenEkle = new Teacher(teacherId, name, branch);
         Teacher  teacher = new Teacher(name,branch);//urun objesi oluşturuldu
         teacherMap.put(teacherId,teacher); //map içerisine urunId key, urun objesi eklendi
         System.out.println(teacherMap);

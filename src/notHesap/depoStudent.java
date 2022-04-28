@@ -1,77 +1,84 @@
 package notHesap;
 
 public class depoStudent{
-   public static String name;
-   public static String stuNo;
-   public static String classes;
-   public static Course mat = new Course();
-   public static Course tur = new Course();
-   public static Course bio = new Course();
+   private String studentName;
+   private  String stuNo;
+   private  String classes;
+   private  int mat;
+   private  int tur;
+   private  int bio;
 
     public depoStudent() {
 
     }
 
-    public depoStudent(String stuNo,String name, String classes) {
+    public depoStudent(String stuNo, String studentName, String classes, int mat,int tur,int bio) {
         this.stuNo=stuNo;
-        this.name=name;
+        this.studentName=studentName;
         this.classes=classes;
+        this.mat=mat;
+        this.tur=tur;
+        this.bio=bio;
     }
 
-    @Override
-    public String toString() {
-        return "ogrenciler" +
-                ", no='" + stuNo + '\'' +
-                ", Ismi='" + name + '\'' +
-                ", sınıfı='" + classes + '\'' + '\n' ;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public static String getName() {
-        return name;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
-    public static void setName(String name) {
-        depoStudent.name = name;
-    }
-
-    public static String getStuNo() {
+    public String getStuNo() {
         return stuNo;
     }
 
-    public static void setStuNo(String stuNo) {
-        depoStudent.stuNo = stuNo;
+    public void setStuNo(String stuNo) {
+        this.stuNo = stuNo;
     }
 
-    public static String getClasses() {
+    public String getClasses() {
         return classes;
     }
 
-    public static void setClasses(String classes) {
-        depoStudent.classes = classes;
+    public void setClasses(String classes) {
+        this.classes = classes;
     }
 
-    public static Course getMat() {
+    public int getMat() {
         return mat;
     }
 
-    public static void setMat(Course mat) {
-        depoStudent.mat = mat;
+    public void setMat(int mat) {
+        this.mat = mat;
     }
 
-    public static Course getTur() {
+    public int getTur() {
         return tur;
     }
 
-    public static void setTur(Course tur) {
-        depoStudent.tur = tur;
+    public void setTur(int tur) {
+        this.tur = tur;
     }
 
-    public static Course getBio() {
+    public int getBio() {
         return bio;
     }
 
-    public static void setBio(Course bio) {
-        depoStudent.bio = bio;
+    public void setBio(int bio) {
+        this.bio = bio;
     }
+
+    @Override
+  public String toString() {
+      return "ogrenciler" +
+              ", no='" + stuNo + '\'' +
+              ", Ismi='" + studentName + '\'' +
+              ", sınıfı='" + classes + '\'' +
+              ", Matematik notu='" + mat + '\'' +
+              ", Türkçe Notu='" + tur + '\'' +
+              ", Biyoloji Notu ='" + bio + '\'' +'\n' ;
+  }
+
 
 }
