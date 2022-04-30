@@ -37,15 +37,15 @@ public class Student {
                 studentPaneli();
                 break;
             case "3":
-               // gectiMi();
+               gectiMi();
                 studentPaneli();
                 break;
             case "4":
-              //  ortalama();
+                ortalama();
                 studentPaneli();
                 break;
             case "5":
-                //notlariYazdir();
+                notlariYazdir();
                 studentPaneli();
                 break;
             case "6":
@@ -55,38 +55,54 @@ public class Student {
                 break;
         }
     }
-/*
+
     private static void ortalama() {
-        double matOrt = (mat.getNoteSozlu() * 0.20) + (mat.getNoteYazili() * 0.80);
-        double turOrt = (bio.getNoteSozlu() * 0.20) + (bio.getNoteYazili() * 0.80);
-        double bioOrt = (tur.getNoteSozlu() * 0.20) + (tur.getNoteYazili() * 0.80);
-        double genelOrt = (matOrt + turOrt + bioOrt) / 3;
-        System.out.println("ortalamanız: "+genelOrt);
+         System.out.println("not ortalamasını öğrenmek istediğiniz öğrenci id sini yazınız :");
+        String arananId= scan.next();
+
+        if (ogrenciMap.keySet().contains(arananId)) {
+            double genelOrt= (ogrenciMap.get(arananId).getMat()+ogrenciMap.get(arananId).getBio()+ogrenciMap.get(arananId).getTur())/3;
+        String gectiMi = genelOrt >= 50 ? "GEÇTİ" : "GEÇEMEDİ";
+        System.out.println("Öğrencinin not Ortalaması:\n" + genelOrt );
+        } else {
+            System.out.println("bu öğrenci numarasında öğrenci yoktur");
+            ortalama();
+        }
     }
 
 
     private static void notlariYazdir() {
-        System.out.println("Mat yazili notu: " + mat.getNoteYazili());
-        System.out.println("Mat sözlü notu: " + mat.getNoteSozlu());
-        System.out.println("Bio yazili notu: " + bio.getNoteYazili());
-        System.out.println("Bio sözlü notu: " + bio.getNoteSozlu());
-        System.out.println("Tur yazili notu: " + tur.getNoteYazili());
-        System.out.println("Tur sözlü notu: " + tur.getNoteSozlu());
+        System.out.println("notlarını yazdırmak istediğiniz öğrenci id sini yazınız :");
+        String arananId= scan.next();
+
+        if (ogrenciMap.keySet().contains(arananId)) {
+        System.out.println("Mat not ortalaması: " +ogrenciMap.get(arananId).getMat());
+        System.out.println("Bio not ortalaması: "+ogrenciMap.get(arananId).getBio() );
+        System.out.println("Tur not ortalaması: " + ogrenciMap.get(arananId).getTur());
+        } else {
+            System.out.println("bu öğrenci numarasında öğrenci yoktur");
+           notlariYazdir();
+        }
     }
 
     private static void gectiMi() {
-        double matOrt = (mat.getNoteSozlu() * 0.20) + (mat.getNoteYazili() * 0.80);
-        double turOrt = (bio.getNoteSozlu() * 0.20) + (bio.getNoteYazili() * 0.80);
-        double bioOrt = (tur.getNoteSozlu() * 0.20) + (tur.getNoteYazili() * 0.80);
-        double genelOrt = (matOrt + turOrt + bioOrt) / 3;
+        System.out.println("sınıfı geçip geçmediğini öğrenmek istediğiniz öğrenci id sini yazınız :");
+        String arananId= scan.next();
+
+        if (ogrenciMap.keySet().contains(arananId)) {
+            double genelOrt= (ogrenciMap.get(arananId).getMat()+ogrenciMap.get(arananId).getBio()+ogrenciMap.get(arananId).getTur())/3;
         String gectiMi = genelOrt >= 50 ? "GEÇTİ" : "GEÇEMEDİ";
-        System.out.println("Öğrencinin Ortalamaları:\n" +
-                "Mat Ortalaması: " + matOrt + "\nBio Ortalaması: " + bioOrt + "\nTur Ortalaması: "
-                + turOrt + "\nGenel Ortalama: " + genelOrt + "\nSınıfı " + gectiMi);
+        System.out.println("Öğrencinin Ortalaması:\n" + genelOrt + "\nSınıfı " + gectiMi);
+        } else {
+            System.out.println("bu öğrenci numarasında öğrenci yoktur");
+            gectiMi();
+        }
+
+        System.out.println(ogrenciMap);
 
 
     }
-*/
+
     private static void sinavNotuEkle() {
         System.out.println("notunu girmek istediğiniz öğrenci id sini yazınız :");
         String arananId= scan.next();
@@ -119,9 +135,9 @@ public class Student {
             int turOrt = (int) ((notTs * 0.20) + (notTy * 0.80));
             int bioOrt = (int) ((notbs * 0.20) + (notby * 0.80));
 
-            ogrenciMap.get(arananId).setMat(matOrt);//eski raf değerini ezip güncel raf değerini girecek
-            ogrenciMap.get(arananId).setMat(turOrt);//eski raf değerini ezip güncel raf değerini girecek
-            ogrenciMap.get(arananId).setMat(bioOrt);//eski raf değerini ezip güncel raf değerini girecek
+            ogrenciMap.get(arananId).setMat(matOrt);
+            ogrenciMap.get(arananId).setTur(turOrt);
+            ogrenciMap.get(arananId).setBio(bioOrt);
 
         } else {
             System.out.println("bu öğrenci numarasında öğrenci yoktur");

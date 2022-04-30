@@ -4,15 +4,15 @@ public class depoStudent{
    private String studentName;
    private  String stuNo;
    private  String classes;
-   private  int mat;
-   private  int tur;
-   private  int bio;
+   private  double mat;
+   private  double tur;
+   private  double bio;
 
     public depoStudent() {
 
     }
 
-    public depoStudent(String stuNo, String studentName, String classes, int mat,int tur,int bio) {
+    public depoStudent(String stuNo, String studentName, String classes, double mat,double tur,double bio) {
         this.stuNo=stuNo;
         this.studentName=studentName;
         this.classes=classes;
@@ -45,27 +45,27 @@ public class depoStudent{
         this.classes = classes;
     }
 
-    public int getMat() {
+    public double getMat() {
         return mat;
     }
 
-    public void setMat(int mat) {
+    public void setMat(double mat) {
         this.mat = mat;
     }
 
-    public int getTur() {
+    public double getTur() {
         return tur;
     }
 
-    public void setTur(int tur) {
+    public void setTur(double tur) {
         this.tur = tur;
     }
 
-    public int getBio() {
+    public double getBio() {
         return bio;
     }
 
-    public void setBio(int bio) {
+    public void setBio(double bio) {
         this.bio = bio;
     }
 
