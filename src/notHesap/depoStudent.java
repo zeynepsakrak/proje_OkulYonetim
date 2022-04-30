@@ -1,13 +1,15 @@
 package notHesap;
 
 public class depoStudent{
-   private String studentName;
+    private String studentName;
    private  String stuNo;
    private  String classes;
    private  double mat;
    private  double tur;
    private  double bio;
-
+    private static double matSozluYuzde;
+    private static double bioSozluYuzde;
+    private static double turSozluYuzde;
     public depoStudent() {
 
     }
@@ -19,6 +21,12 @@ public class depoStudent{
         this.mat=mat;
         this.tur=tur;
         this.bio=bio;
+    }
+
+    public depoStudent(double matSozluYuzde, double bioSozluYuzde, double turSozluYuzde) {
+        this.matSozluYuzde = matSozluYuzde;
+        this.bioSozluYuzde = bioSozluYuzde;
+        this.turSozluYuzde = turSozluYuzde;
     }
 
     public String getStudentName() {
@@ -67,6 +75,30 @@ public class depoStudent{
 
     public void setBio(double bio) {
         this.bio = bio;
+    }
+
+    public static double getMatSozluYuzde() {
+        return matSozluYuzde;
+    }
+
+    public static void setMatSozluYuzde(double matSozluYuzde) {
+        depoStudent.matSozluYuzde = matSozluYuzde;
+    }
+
+    public static double getBioSozluYuzde() {
+        return bioSozluYuzde;
+    }
+
+    public static void setBioSozluYuzde(double bioSozluYuzde) {
+        depoStudent.bioSozluYuzde = bioSozluYuzde;
+    }
+
+    public static double getTurSozluYuzde() {
+        return turSozluYuzde;
+    }
+
+    public static void setTurSozluYuzde(double turSozluYuzde) {
+        depoStudent.turSozluYuzde = turSozluYuzde;
     }
 
     @Override

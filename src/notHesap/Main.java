@@ -18,7 +18,6 @@ public class Main{
                         "\t====================================\n" +
                         "\t 1- ÖĞRENCİ İŞLEMLERİ\n" +
                         "\t 2- ÖĞRETMEN İŞLEMLERİ\n" +
-                        "\t 3- COURSE İŞLEMLERİ\n" +
                         "\t Q- ÇIKIŞ"
                 );
                 System.out.print("Lütfen islemi giriniz: ");
@@ -32,9 +31,6 @@ public class Main{
                         teacherPaneli();
                         break;
 
-                    case "3":
-                        System.out.println("COURSE paneli");
-                        break;
                 }
 
 

@@ -24,7 +24,7 @@ public class Student {
 //-->öğrenci(), topluSınavNotuEkle(), gectiMi() ortlamaHesapla(), notYazdır()
         System.out.println("====================================\nOGRENCI YONETIM PANELI\n" +
                 "====================================\n"
-                + "1- OGRENCI EKLEME\n2-SINAV NOTU EKLEYİNİZ \n3- GECTİMİ \n4- ORTALAMA HESAPLAYINIZ \n5- NOTLARI YAZDIRINIZ\n6- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
+                + "1- OGRENCI EKLEME\n2-ORTALAMA YÜZDE BELİRLEME\n3-SINAV NOTU EKLEYİNİZ \n4- GECTİMİ \n5- ORTALAMA HESAPLAYINIZ \n6- NOTLARI YAZDIRINIZ\n7- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
         System.out.print("isleminiz seciniz : ");
         String secim = scan.next().toUpperCase(Locale.ROOT);
         switch (secim) {
@@ -33,27 +33,44 @@ public class Student {
                 studentPaneli();
                 break;
             case "2":
-                sinavNotuEkle();
+                yuzdeBelirle();
                 studentPaneli();
                 break;
             case "3":
-               gectiMi();
+                sinavNotuEkle();
                 studentPaneli();
                 break;
             case "4":
-                ortalama();
+               gectiMi();
                 studentPaneli();
                 break;
             case "5":
-                notlariYazdir();
+                ortalama();
                 studentPaneli();
                 break;
             case "6":
+                notlariYazdir();
+                studentPaneli();
+                break;
+            case "7":
                 girisPaneli();
                 break;
             default:
                 break;
         }
+    }
+
+    private static void yuzdeBelirle() {
+        System.out.println("Sözlü notlarının ortalamaya etkileme yüzdesini, her ders için ayrı  belirtin. ");
+        System.out.println("matematik sözlü notu yüzdesi: ");
+        setMatSozluYuzde(scan.nextDouble());
+
+        System.out.println("biyoloji sözlü notu yüzdesi: ");
+        setBioSozluYuzde(scan.nextDouble());
+
+        System.out.println("türkçe sözlü notu yüzdesi: ");
+       setTurSozluYuzde(scan.nextDouble());
+
     }
 
     private static void ortalama() {
@@ -104,6 +121,10 @@ public class Student {
     }
 
     private static void sinavNotuEkle() {
+        if (getBioSozluYuzde()==0&&getTurSozluYuzde()==0&&getMatSozluYuzde()==0){
+            System.out.println("notların yüzdelik dilimini girmediniz! lütfen öncelikle yüzdelik miktarını giriniz..");
+            yuzdeBelirle();
+        }else {
         System.out.println("notunu girmek istediğiniz öğrenci id sini yazınız :");
         String arananId= scan.next();
 
@@ -131,9 +152,9 @@ public class Student {
         System.out.println("Tur yazili notu: " +notTy + "\nTur sözlü notu: " + notTs);
 
 
-            int matOrt = (int) ((notms * 0.20) + (notmy * 0.80));
-            int turOrt = (int) ((notTs * 0.20) + (notTy * 0.80));
-            int bioOrt = (int) ((notbs * 0.20) + (notby * 0.80));
+            int matOrt = (int) ((notms *getMatSozluYuzde()) + (notmy * (1-getMatSozluYuzde())));
+            int turOrt = (int) ((notTs *getTurSozluYuzde()) + (notTy * (1-getTurSozluYuzde())));
+            int bioOrt = (int) ((notbs *getBioSozluYuzde()) + (notby * (1-getBioSozluYuzde())));
 
             ogrenciMap.get(arananId).setMat(matOrt);
             ogrenciMap.get(arananId).setTur(turOrt);
@@ -142,7 +163,7 @@ public class Student {
         } else {
             System.out.println("bu öğrenci numarasında öğrenci yoktur");
             sinavNotuEkle();
-        }
+        } }
 
         System.out.println(ogrenciMap);
     }
