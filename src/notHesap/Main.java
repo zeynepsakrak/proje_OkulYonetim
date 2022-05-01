@@ -18,7 +18,7 @@ public class Main{
                         "\t====================================\n" +
                         "\t 1- ÖĞRENCİ İŞLEMLERİ\n" +
                         "\t 2- ÖĞRETMEN İŞLEMLERİ\n" +
-                        "\t Q- ÇIKIŞ"
+                        "\t 3- ÇIKIŞ"
                 );
                 System.out.print("Lütfen islemi giriniz: ");
                 girilenDeger = scan.next();
@@ -30,7 +30,8 @@ public class Main{
                     case "2":
                         teacherPaneli();
                         break;
-
+                    case "3":
+                        break;
                 }
 
 
