@@ -35,7 +35,7 @@ public class Main{
                 }
 
 
-            } while (!girilenDeger.equalsIgnoreCase("Q"));
+            } while (!girilenDeger.equalsIgnoreCase("3"));
             System.out.println("Sistemden başarıyla çıktınız");
         }
         }
