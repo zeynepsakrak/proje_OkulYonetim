@@ -5,6 +5,7 @@ import java.util.*;
 
 import static notHesap.Main.girisPaneli;
 import static notHesap.depoStudent.*;
+import static notHesap.depoStudent.setMatSozluYuzde;
 
 public class Student {
 
@@ -23,7 +24,7 @@ public class Student {
 //-->öğrenci(), topluSınavNotuEkle(), gectiMi() ortlamaHesapla(), notYazdır()
         System.out.println("====================================\nOGRENCI YONETIM PANELI\n" +
                 "====================================\n"
-                + "1- OGRENCI EKLEME\n2-ORTALAMA YÜZDE BELİRLEME\n3-SINAV NOTU EKLEYİNİZ \n4- GECTİMİ \n5- ORTALAMA HESAPLAYINIZ \n6- NOTLARI YAZDIRINIZ\n7- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
+                + "1- ÖGRENCI EKLEME\n2- ORTALAMA YÜZDE BELİRLEME\n3- SINAV NOTU EKLEYİNİZ \n4- GECTİMİ \n5- ORTALAMA HESAPLAYINIZ \n6- NOTLARI YAZDIRINIZ\n7- ÖĞRENCİ LİSTESİ\n8- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
         System.out.print("isleminiz seciniz : ");
         String secim = scan.next().toUpperCase(Locale.ROOT);
         switch (secim) {
@@ -52,23 +53,54 @@ public class Student {
                 studentPaneli();
                 break;
             case "7":
-
+                listeleme();
+                studentPaneli();
+                break;
+            case "8":
                 break;
             default:
                 break;
         }
     }
 
+    private static void listeleme() {
+        System.out.println("   *** öğrenci paneli   ***");
+        Set<Map.Entry<String, depoStudent> > EntrySeti = ogrenciMap.entrySet();
+        System.out.println("------------------------ÖĞRENCİ LİSTESİ---------------------------------");
+        System.out.println("ÖĞRENCİNO   İSİMSOYİSİM     SINIFI      MATEMATİK   TÜRKÇE  BİYOLOJİ"+
+                "\n-----------------------------------------------------------------------");
+        for (Map.Entry<String, depoStudent> e : EntrySeti
+        ) {
+            String entryKey = e.getKey();
+            System.out.printf("%-8s %-12s %-15s  %-10f %-10f %-10f\n",ogrenciMap.get(entryKey).getStuNo(), ogrenciMap.get(entryKey).getStudentName(), ogrenciMap.get(entryKey).getClasses(),ogrenciMap.get(entryKey).getMat(),ogrenciMap.get(entryKey).getTur(),ogrenciMap.get(entryKey).getBio());
+        }
+    }
+
     private static void yuzdeBelirle() {
-        System.out.println("Sözlü notlarının ortalamaya etkileme yüzdesini, her ders için ayrı  belirtin. ");
+        System.out.println("Sözlü notlarının ortalamaya etkileme yüzdesini, her ders için ayrı  belirtin. (0.20, 0.30 veya 0.50 giriniz) ");
         System.out.println("matematik sözlü notu yüzdesi: ");
-        setMatSozluYuzde(scan.nextDouble());
+        double x=scan.nextDouble();
+        if ((x==0.20)||(x==0.30) ||(x==0.50)){
+            setMatSozluYuzde(x);
+        }else {
+            System.out.println("lütfen geçerli yüzdelik giriniz");
+        }
 
         System.out.println("biyoloji sözlü notu yüzdesi: ");
-        setBioSozluYuzde(scan.nextDouble());
+        double y=scan.nextDouble();
+        if ((y==0.20)||(y==0.30) ||(y==0.50)){
+            setBioSozluYuzde(y);
+        }else {
+            System.out.println("lütfen geçerli yüzdelik giriniz");
+        }
 
         System.out.println("türkçe sözlü notu yüzdesi: ");
-        setTurSozluYuzde(scan.nextDouble());
+        double z=scan.nextDouble();
+        if ((z==0.20)||(z==0.30) ||(z==0.50)){
+            setTurSozluYuzde(z);
+        }else {
+            System.out.println("lütfen geçerli yüzdelik giriniz");
+        }
 
     }
 
@@ -131,29 +163,29 @@ public class Student {
 
 
                 System.out.println("Lutfen mat icin yazili notu giriniz");
-                int notmy = scan.nextInt();
+                Double notmy = scan.nextDouble();
                 System.out.println("Lutfen mat icin sözlü notu giriniz");
-                int notms = scan.nextInt();
+                Double notms = scan.nextDouble();
                 System.out.println("Mat yazili notu: " + notmy + "\nMat sözlü notu: " + notms);
 
 
                 System.out.println("Lutfen bio icin yazili notu giriniz");
-                int notby = scan.nextInt();
+                Double notby = scan.nextDouble();
                 System.out.println("Lutfen bio icin sözlü notu giriniz");
-                int notbs = scan.nextInt();
+                Double notbs = scan.nextDouble();
                 System.out.println("Bio yazili notu: " + notby + "\nBio sözlü notu: " + notbs);
 
 
                 System.out.println("Lutfen tur icin yazili notu giriniz");
-                int notTy = scan.nextInt();
+                Double notTy = scan.nextDouble();
                 System.out.println("Lutfen tur icin sözlü notu giriniz");
-                int notTs = scan.nextInt();
+                Double notTs = scan.nextDouble();
                 System.out.println("Tur yazili notu: " + notTy + "\nTur sözlü notu: " + notTs);
 
 
-                int matOrt = (int) ((notms * getMatSozluYuzde()) + (notmy * (1 - getMatSozluYuzde())));
-                int turOrt = (int) ((notTs * getTurSozluYuzde()) + (notTy * (1 - getTurSozluYuzde())));
-                int bioOrt = (int) ((notbs * getBioSozluYuzde()) + (notby * (1 - getBioSozluYuzde())));
+                Double matOrt = (Double) ((notms * getMatSozluYuzde()) + (notmy * (1 - getMatSozluYuzde())));
+                Double turOrt = (Double) ((notTs * getTurSozluYuzde()) + (notTy * (1 - getTurSozluYuzde())));
+                Double bioOrt = (Double) ((notbs * getBioSozluYuzde()) + (notby * (1 - getBioSozluYuzde())));
 
                 ogrenciMap.get(arananId).setMat(matOrt);
                 ogrenciMap.get(arananId).setTur(turOrt);
@@ -173,14 +205,14 @@ public class Student {
         System.out.println("isim giriniz");
         scan.nextLine();//bos dummy attık
         String studentName = scan.nextLine();
-        System.out.println("öğrenci numarası giriniz giriniz");
+        System.out.println("öğrenci numarası giriniz");
         String stuNo = scan.nextLine();
         System.out.println("sınıf giriniz");
         //scan.nextLine();//bos dummy attık
         String classes = scan.nextLine();
-        int mat = 0;
-        int tur = 0;
-        int bio = 0;
+        Double mat = 0.0;
+        Double tur = 0.0;
+        Double bio = 0.0;
 
         depoStudent ogrenci = new depoStudent(stuNo, studentName, classes, mat, tur, bio);//urun objesi oluşturuldu
         ogrenciMap.put(stuNo, ogrenci);

@@ -73,7 +73,7 @@ static  Scanner scan=new Scanner(System.in);
 //-->öğrenci(), topluSınavNotuEkle(), gectiMi() ortlamaHesapla(), notYazdır()
         System.out.println("====================================\nOGRETMEN YONETIM PANELI\n" +
                 "====================================\n"
-                + "1- OGRETMEN EKLE \n2-OGRETMEN YAZDIR \n3- ÖĞRETMEN PANELİNDEN ÇIKIŞ ");
+                + "1- ÖGRETMEN EKLE \n2- ÖGRETMEN YAZDIR \n3- ÖĞRETMEN PANELİNDEN ÇIKIŞ ");
         System.out.print("isleminiz seciniz : ");
         String secim = scan.next().toUpperCase(Locale.ROOT);
         switch (secim) {
@@ -108,10 +108,10 @@ static  Scanner scan=new Scanner(System.in);
 
     private static void ogretmenekle() {
         System.out.println("   ***  Ogretmen ekleme sayfası   ***");
-        System.out.print("bolum giriniz : ");
+        System.out.print("Bölüm giriniz : ");
         scan.nextLine();//dummy
         String branch = scan.nextLine();
-        System.out.print("Ogretmenin Adini Soyadini giriniz : ");
+        System.out.print("Ögretmenin Adini Soyadini giriniz : ");
         String name = scan.nextLine();
         Teacher  teacher = new Teacher(name,branch);//urun objesi oluşturuldu
         teacherMap.put(teacherId,teacher); //map içerisine urunId key, urun objesi eklendi
