@@ -17,7 +17,7 @@ Methods : Student(), addBulkExamNote(), isPass(), calcAvarage(), printNote()
 -->öğrenci(), topluSınavNotuEkle(), gectiMi() ortlamaHesapla(), notYazdır()
 
 -----------TASK
-Course class'ında derse ait sözlü notu kısmını girin ve ortalamaya etkisini
+Course class'ında derse ait sözlü notu kısmını girin90 ve ortalamaya etkisini
 her ders için ayrı ayrı belirtin. Sözlü notlarınıda ortalamaya etkileme
 yüzdesi ile dahil edin.
 
