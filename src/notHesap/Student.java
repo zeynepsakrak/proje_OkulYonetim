@@ -24,7 +24,7 @@ public class Student {
 //-->öğrenci(), topluSınavNotuEkle(), gectiMi() ortlamaHesapla(), notYazdır()
         System.out.println("====================================\nOGRENCI YONETIM PANELI\n" +
                 "====================================\n"
-                + "1- ÖGRENCI EKLEME\n2- ORTALAMA YÜZDE BELİRLEME\n3- SINAV NOTU EKLEYİNİZ \n4- GECTİMİ \n5- ORTALAMA HESAPLAYINIZ \n6- NOTLARI YAZDIRINIZ\n7- ÖĞRENCİ LİSTESİ\n8- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
+                + "1- ÖGRENCI EKLEME\n2- ÖĞRENCİ SİLME \n3- SINAV NOTU EKLEYİNİZ \n4- GECTİMİ \n5- ORTALAMA HESAPLAYINIZ \n6- NOTLARI YAZDIRINIZ\n7- ÖĞRENCİ LİSTESİ\n8- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
         System.out.print("isleminiz seciniz : ");
         String secim = scan.next().toUpperCase(Locale.ROOT);
         switch (secim) {
@@ -33,10 +33,11 @@ public class Student {
                 studentPaneli();
                 break;
             case "2":
-                yuzdeBelirle();
-                studentPaneli();
+               studentDelete();
+               studentPaneli();
                 break;
             case "3":
+                yuzdeBelirle();
                 sinavNotuEkle();
                 studentPaneli();
                 break;
@@ -61,6 +62,20 @@ public class Student {
             default:
                 break;
         }
+    }
+
+    private static void studentDelete() {
+        System.out.println("bilgisini silmek istediğiniz öğrenci numarasını yazınız :");
+        String arananId = scan.next();
+
+        if (ogrenciMap.keySet().contains(arananId)) {
+               ogrenciMap.remove(arananId);
+            System.out.println("öğrenci bilgileri silinmiştir");
+        } else {
+            System.out.println("böyle bir öğrenci bulunamadığından silinemedi");
+        }
+
+       // System.out.println(ogrenciMap);
     }
 
     private static void listeleme() {
@@ -101,13 +116,11 @@ public class Student {
         }else {
             System.out.println("lütfen geçerli yüzdelik giriniz");
         }
-
     }
 
     private static void ortalama() {
-        System.out.println("not ortalamasını öğrenmek istediğiniz öğrenci id sini yazınız :");
+        System.out.println("not ortalamasını öğrenmek istediğiniz öğrenci numarasını yazınız :");
         String arananId = scan.next();
-
         if (ogrenciMap.keySet().contains(arananId)) {
             double genelOrt = (ogrenciMap.get(arananId).getMat() + ogrenciMap.get(arananId).getBio() + ogrenciMap.get(arananId).getTur()) / 3;
             String gectiMi = genelOrt >= 50 ? "GEÇTİ" : "GEÇEMEDİ";
@@ -134,16 +147,21 @@ public class Student {
     }
 
     private static void gectiMi() {
-        System.out.println("sınıfı geçip geçmediğini öğrenmek istediğiniz öğrenci id sini yazınız :");
+        System.out.println("sınıfı geçip geçmediğini öğrenmek istediğiniz öğrenci numarasını yazınız :");
         String arananId = scan.next();
 
-        if (ogrenciMap.keySet().contains(arananId)) {
-            double genelOrt = (ogrenciMap.get(arananId).getMat() + ogrenciMap.get(arananId).getBio() + ogrenciMap.get(arananId).getTur()) / 3;
-            String gectiMi = genelOrt >= 50 ? "GEÇTİ" : "GEÇEMEDİ";
-            System.out.println("Öğrencinin Ortalaması:\n" + genelOrt + "\nSınıfı " + gectiMi);
-        } else {
-            System.out.println("bu öğrenci numarasında öğrenci yoktur");
-            gectiMi();
+        try {
+            if (ogrenciMap.keySet().contains(arananId)) {
+
+                double genelOrt = (ogrenciMap.get(arananId).getMat() + ogrenciMap.get(arananId).getBio() + ogrenciMap.get(arananId).getTur()) / 3;
+                String gectiMi = genelOrt >= 50 ? "GEÇTİ" : "GEÇEMEDİ";
+                System.out.println("Öğrencinin Ortalaması:\n" + genelOrt + "\nSınıfı " + gectiMi);
+            } else {
+                System.out.println("bu öğrenci numarasında öğrenci yoktur");
+                gectiMi();
+            }
+        } catch (InputMismatchException e) {
+            e.printStackTrace();
         }
 
         System.out.println(ogrenciMap);
@@ -217,7 +235,9 @@ public class Student {
         depoStudent ogrenci = new depoStudent(stuNo, studentName, classes, mat, tur, bio);//urun objesi oluşturuldu
         ogrenciMap.put(stuNo, ogrenci);
 
-        System.out.println(ogrenciMap);
+
+        //Thread.sleep(5000);
+        //System.out.println(ogrenciMap);
 
     }
 
