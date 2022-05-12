@@ -227,7 +227,7 @@ public class Student {
         depoStudent ogrenci = new depoStudent(stuNo, studentName, classes, mat, tur, bio);//urun objesi oluşturuldu
         ogrenciMap.put(stuNo, ogrenci);
 
-        System.out.println("başka öğrenci eklemek istiyorsanız 1'i,\n öğrenciyi silmek istiyorsanız 2'yi, \n öğrenci paneline dönmek isastiyorsanız 3'ü tuşlayınız");
+        System.out.println("başka öğrenci eklemek istiyorsanız 1'i,\nöğrenciyi silmek istiyorsanız 2'yi, \nöğrenci paneline dönmek isastiyorsanız 3'ü tuşlayınız");
         String secim = scan.next().toUpperCase(Locale.ROOT);
         switch (secim) {
             case "1":
