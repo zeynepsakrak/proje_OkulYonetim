@@ -2,26 +2,18 @@ package notHesap;
 
 import javax.xml.namespace.QName;
 import java.util.*;
-
 import static notHesap.Main.girisPaneli;
 import static notHesap.depoStudent.*;
 import static notHesap.depoStudent.setMatSozluYuzde;
 
 public class Student {
 
-    //static Course mat;
-    //static Course tur;
-    //static Course bio;
     static Scanner scan = new Scanner(System.in);
     static List<String> ogrenciList = new ArrayList<>();
     public static Map<String, depoStudent> ogrenciMap = new HashMap<String, depoStudent>();
-
-
     public static void studentPaneli() {
 
         double cAvarage;
-//Methods : Student(), addBulkExamNote(), isPass(), calcAvarage(), printNote()
-//-->öğrenci(), topluSınavNotuEkle(), gectiMi() ortlamaHesapla(), notYazdır()
         System.out.println("====================================\nOGRENCI YONETIM PANELI\n" +
                 "====================================\n"
                 + "1- ÖGRENCI EKLEME\n2- ÖĞRENCİ SİLME \n3- SINAV NOTU EKLEYİNİZ \n4- GECTİMİ \n5- ORTALAMA HESAPLAYINIZ \n6- NOTLARI YAZDIRINIZ\n7- ÖĞRENCİ LİSTESİ\n8- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
@@ -37,8 +29,7 @@ public class Student {
                studentPaneli();
                 break;
             case "3":
-                yuzdeBelirle();
-                sinavNotuEkle();
+               sinavNotuEkle();
                 studentPaneli();
                 break;
             case "4":
@@ -74,8 +65,6 @@ public class Student {
         } else {
             System.out.println("böyle bir öğrenci bulunamadığından silinemedi");
         }
-
-       // System.out.println(ogrenciMap);
     }
 
     private static void listeleme() {
@@ -92,30 +81,36 @@ public class Student {
     }
 
     private static void yuzdeBelirle() {
+
         System.out.println("Sözlü notlarının ortalamaya etkileme yüzdesini, her ders için ayrı  belirtin. (0.20, 0.30 veya 0.50 giriniz) ");
-        System.out.println("matematik sözlü notu yüzdesi: ");
-        double x=scan.nextDouble();
-        if ((x==0.20)||(x==0.30) ||(x==0.50)){
+
+        do{
+            System.out.println("matematik sözlü notu yüzdesi: ");
+            double x=scan.nextDouble();
             setMatSozluYuzde(x);
-        }else {
-            System.out.println("lütfen geçerli yüzdelik giriniz");
-        }
-
-        System.out.println("biyoloji sözlü notu yüzdesi: ");
-        double y=scan.nextDouble();
-        if ((y==0.20)||(y==0.30) ||(y==0.50)){
+            if (((x==0.20)||(x==0.30) ||(x==0.50))){
+                break;
+            }
+        }while(true);
+        do{
+            System.out.println("biyoloji sözlü notu yüzdesi: ");
+            double y=scan.nextDouble();
             setBioSozluYuzde(y);
-        }else {
-            System.out.println("lütfen geçerli yüzdelik giriniz");
-        }
+            if (((y==0.20)||(y==0.30) ||(y==0.50))){
+                break;
+            }
+        }while(true);
 
-        System.out.println("türkçe sözlü notu yüzdesi: ");
-        double z=scan.nextDouble();
-        if ((z==0.20)||(z==0.30) ||(z==0.50)){
+        do{
+            System.out.println("türkçe sözlü notu yüzdesi: ");
+            double z=scan.nextDouble();
             setTurSozluYuzde(z);
-        }else {
-            System.out.println("lütfen geçerli yüzdelik giriniz");
-        }
+            if (((z==0.20)||(z==0.30) ||(z==0.50))){
+                break;
+            }
+        }while(true);
+            sinavNotuEkle();
+
     }
 
     private static void ortalama() {
@@ -124,7 +119,7 @@ public class Student {
         if (ogrenciMap.keySet().contains(arananId)) {
             double genelOrt = (ogrenciMap.get(arananId).getMat() + ogrenciMap.get(arananId).getBio() + ogrenciMap.get(arananId).getTur()) / 3;
             String gectiMi = genelOrt >= 50 ? "GEÇTİ" : "GEÇEMEDİ";
-            System.out.println("Öğrencinin not Ortalaması:\n" + genelOrt);
+            System.out.println(ogrenciMap.get(arananId).getStudentName()+" isimli Öğrencinin not Ortalaması:\n" + genelOrt);
         } else {
             System.out.println("bu öğrenci numarasında öğrenci yoktur");
             ortalama();
@@ -133,7 +128,7 @@ public class Student {
 
 
     private static void notlariYazdir() {
-        System.out.println("notlarını yazdırmak istediğiniz öğrenci id sini yazınız :");
+        System.out.println("notlarını yazdırmak istediğiniz öğrenci numarasını yazınız :");
         String arananId = scan.next();
 
         if (ogrenciMap.keySet().contains(arananId)) {
@@ -155,7 +150,7 @@ public class Student {
 
                 double genelOrt = (ogrenciMap.get(arananId).getMat() + ogrenciMap.get(arananId).getBio() + ogrenciMap.get(arananId).getTur()) / 3;
                 String gectiMi = genelOrt >= 50 ? "GEÇTİ" : "GEÇEMEDİ";
-                System.out.println("Öğrencinin Ortalaması:\n" + genelOrt + "\nSınıfı " + gectiMi);
+                System.out.println(ogrenciMap.get(arananId).getStudentName()+ " isimli öğrenci sınıfı :"+ gectiMi);
             } else {
                 System.out.println("bu öğrenci numarasında öğrenci yoktur");
                 gectiMi();
@@ -164,17 +159,17 @@ public class Student {
             e.printStackTrace();
         }
 
-        System.out.println(ogrenciMap);
 
 
     }
 
     private static void sinavNotuEkle() {
+
         if (getBioSozluYuzde() == 0 && getTurSozluYuzde() == 0 && getMatSozluYuzde() == 0) {
             System.out.println("notların yüzdelik dilimini girmediniz! lütfen öncelikle yüzdelik miktarını giriniz..");
             yuzdeBelirle();
         } else {
-            System.out.println("notunu girmek istediğiniz öğrenci id sini yazınız :");
+            System.out.println("notunu girmek istediğiniz öğrenci numarasını yazınız :");
             String arananId = scan.next();
 
             if (ogrenciMap.keySet().contains(arananId)) {
@@ -212,32 +207,25 @@ public class Student {
             } else {
                 System.out.println("bu öğrenci numarasında öğrenci yoktur");
                 sinavNotuEkle();
-            }
-        }
+            }}
 
-        System.out.println(ogrenciMap);
     }
 
     private static void student() {
         System.out.println("lütfen öğrenci bilgileri giriniz: ");
-        System.out.println("isim giriniz");
+        System.out.println("isim soyisim giriniz");
         scan.nextLine();//bos dummy attık
         String studentName = scan.nextLine();
         System.out.println("öğrenci numarası giriniz");
         String stuNo = scan.nextLine();
         System.out.println("sınıf giriniz");
-        //scan.nextLine();//bos dummy attık
         String classes = scan.nextLine();
-        Double mat = 0.0;
-        Double tur = 0.0;
-        Double bio = 0.0;
+        double mat = 0.0;
+        double tur = 0.0;
+        double bio = 0.0;
 
         depoStudent ogrenci = new depoStudent(stuNo, studentName, classes, mat, tur, bio);//urun objesi oluşturuldu
         ogrenciMap.put(stuNo, ogrenci);
-
-
-        //Thread.sleep(5000);
-        //System.out.println(ogrenciMap);
 
     }
 
