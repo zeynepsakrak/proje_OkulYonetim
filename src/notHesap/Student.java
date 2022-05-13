@@ -49,6 +49,7 @@ public class Student {
                 studentPaneli();
                 break;
             case "8":
+                girisPaneli();
                 break;
             default:
                 break;
@@ -76,7 +77,7 @@ public class Student {
         for (Map.Entry<String, depoStudent> e : EntrySeti
         ) {
             String entryKey = e.getKey();
-            System.out.printf("%-8s %-12s %-15s  %-10f %-10f %-10f\n",ogrenciMap.get(entryKey).getStuNo(), ogrenciMap.get(entryKey).getStudentName(), ogrenciMap.get(entryKey).getClasses(),ogrenciMap.get(entryKey).getMat(),ogrenciMap.get(entryKey).getTur(),ogrenciMap.get(entryKey).getBio());
+            System.out.printf("%-10s %-12s %-12s  %-10f %-10f %-10f\n",ogrenciMap.get(entryKey).getStuNo(), ogrenciMap.get(entryKey).getStudentName(), ogrenciMap.get(entryKey).getClasses(),ogrenciMap.get(entryKey).getMat(),ogrenciMap.get(entryKey).getTur(),ogrenciMap.get(entryKey).getBio());
         }
     }
 
@@ -176,16 +177,36 @@ public class Student {
 
 
                 System.out.println("Lutfen mat icin yazili notu giriniz");
-                Double notmy = scan.nextDouble();
+                Double notmy = null;
+                try {
+                    notmy = scan.nextDouble();
+                } catch (InputMismatchException e) {
+
+                }
                 System.out.println("Lutfen mat icin sözlü notu giriniz");
-                Double notms = scan.nextDouble();
+                Double notms = null;
+                try {
+                    notms = scan.nextDouble();
+                } catch (InputMismatchException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("Mat yazili notu: " + notmy + "\nMat sözlü notu: " + notms);
 
 
                 System.out.println("Lutfen bio icin yazili notu giriniz");
-                Double notby = scan.nextDouble();
+                Double notby = null;
+                try {
+                    notby = scan.nextDouble();
+                } catch (InputMismatchException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("Lutfen bio icin sözlü notu giriniz");
-                Double notbs = scan.nextDouble();
+                Double notbs = null;
+                try {
+                    notbs = scan.nextDouble();
+                } catch (InputMismatchException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("Bio yazili notu: " + notby + "\nBio sözlü notu: " + notbs);
 
 
@@ -227,7 +248,7 @@ public class Student {
         depoStudent ogrenci = new depoStudent(stuNo, studentName, classes, mat, tur, bio);//urun objesi oluşturuldu
         ogrenciMap.put(stuNo, ogrenci);
 
-        System.out.println("başka öğrenci eklemek istiyorsanız 1'i,\nöğrenciyi silmek istiyorsanız 2'yi, \nöğrenci paneline dönmek isastiyorsanız 3'ü tuşlayınız");
+        System.out.println("başka öğrenci eklemek istiyorsanız 1'i,\nöğrenciyi silmek istiyorsanız 2'yi, \nöğrenci paneline dönmek için istediğiniz tuşa basınız.");
         String secim = scan.next().toUpperCase(Locale.ROOT);
         switch (secim) {
             case "1":
@@ -236,10 +257,8 @@ public class Student {
             case "2":
                 studentDelete();
                 break;
-            case "3":
-                studentPaneli();
-                break;
             default:
+                studentPaneli();
                 break;
         }
     }
