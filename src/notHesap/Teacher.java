@@ -57,7 +57,7 @@ public class Teacher {
 //-->öğrenci(), topluSınavNotuEkle(), gectiMi() ortlamaHesapla(), notYazdır()
         System.out.println("====================================\nOGRETMEN YONETIM PANELI\n" +
                 "====================================\n"
-                + "1- ÖGRETMEN EKLE \n2- ÖGRETMEN LİSTELE \n3- OGRETMEN SIL\n4- ÖĞRETMEN PANELİNDEN ÇIKIŞ ");
+                + "1- ÖGRETMEN EKLE \n2- ÖGRETMEN LİSTELE \n3- OGRETMEN SIL\nHERHANGİ BİR TUŞ- ÖĞRETMEN PANELİNDEN ÇIKIŞ ");
         System.out.print("isleminiz seciniz : ");
         String secim = scan.next().toUpperCase(Locale.ROOT);
         switch (secim) {

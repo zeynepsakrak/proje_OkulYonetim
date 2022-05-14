@@ -16,7 +16,7 @@ public class Student {
         double cAvarage;
         System.out.println("====================================\nOGRENCI YONETIM PANELI\n" +
                 "====================================\n"
-                + "1- ÖGRENCI EKLEME\n2- ÖĞRENCİ SİLME \n3- SINAV NOTU EKLEYİNİZ \n4- GECTİMİ \n5- ORTALAMA HESAPLAYINIZ \n6- NOTLARI YAZDIRINIZ\n7- ÖĞRENCİ LİSTESİ\n8- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
+                + "1- ÖGRENCI EKLEME\n2- ÖĞRENCİ SİLME \n3- SINAV NOTU EKLEYİNİZ \n4- GECTİMİ \n5- ORTALAMA HESAPLAYINIZ \n6- NOTLARI YAZDIRINIZ\n7- ÖĞRENCİ LİSTESİ\nHERHANGİ BİR TUŞ- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
         System.out.print("isleminiz seciniz : ");
         String secim = scan.next().toUpperCase(Locale.ROOT);
         switch (secim) {
@@ -83,33 +83,79 @@ public class Student {
 
     private static void yuzdeBelirle() {
 
-        System.out.println("Sözlü notlarının ortalamaya etkileme yüzdesini, her ders için ayrı  belirtin. (0.20, 0.30 veya 0.50 giriniz) ");
+        System.out.println("Sözlü notlarının ortalamaya etkileme yüzdesini, her ders için ayrı  belirtin. \nLÜTFEN!! 0.20, 0.30 veya 0.50 giriniz ");
+
+        double x;
+        double y;
+        double z;
+
+        boolean xFlag = false;
+        boolean yFlag = false;
+        boolean zFlag = false;
 
         do{
             System.out.println("matematik sözlü notu yüzdesi: ");
-            double x=scan.nextDouble();
-            setMatSozluYuzde(x);
-            if (((x==0.20)||(x==0.30) ||(x==0.50))){
-                break;
+
+            if(xFlag==true){
+                scan.nextLine();
+                xFlag=false;
             }
-        }while(true);
+
+            try {
+                x=scan.nextDouble();
+                setMatSozluYuzde(x);
+
+                if (((x==0.20) || (x==0.30) || (x==0.50))){
+                    xFlag=false;
+                } else {
+                    xFlag=true;
+                }
+            } catch (Exception e) {
+                xFlag=true;
+            }
+        }while(xFlag);
+
         do{
             System.out.println("biyoloji sözlü notu yüzdesi: ");
-            double y=scan.nextDouble();
-            setBioSozluYuzde(y);
-            if (((y==0.20)||(y==0.30) ||(y==0.50))){
-                break;
+
+            if(yFlag==true){
+                scan.nextLine();
+                yFlag=false;
             }
-        }while(true);
+
+            try {
+                y=scan.nextDouble();
+                setBioSozluYuzde(y);
+                if (((y==0.20)||(y==0.30) ||(y==0.50))){
+                    yFlag=false;
+                }else {
+                    yFlag=true;
+                }
+            } catch (Exception e) {
+                yFlag=true;
+            }
+        }while(yFlag);
 
         do{
             System.out.println("türkçe sözlü notu yüzdesi: ");
-            double z=scan.nextDouble();
-            setTurSozluYuzde(z);
-            if (((z==0.20)||(z==0.30) ||(z==0.50))){
-                break;
+
+            if(zFlag==true){
+                scan.nextLine();
+                zFlag=false;
             }
-        }while(true);
+
+            try {
+                z=scan.nextDouble();
+                setTurSozluYuzde(z);
+                if (((z==0.20)||(z==0.30) ||(z==0.50))){
+                    zFlag=false;
+                } else {
+                    zFlag=true;
+                }
+            } catch (Exception e) {
+                zFlag=true;
+            }
+        }while(zFlag);
             sinavNotuEkle();
 
     }
@@ -176,44 +222,108 @@ public class Student {
             if (ogrenciMap.keySet().contains(arananId)) {
 
 
-                System.out.println("Lutfen mat icin yazili notu giriniz");
-                Double notmy = null;
-                try {
-                    notmy = scan.nextDouble();
-                } catch (InputMismatchException e) {
 
-                }
-                System.out.println("Lutfen mat icin sözlü notu giriniz");
+                Double notmy = null;
+                boolean myFlag = false;
+
+                do {
+                    System.out.println("Lutfen mat icin yazili notu giriniz");
+                    if (myFlag==true){
+                        scan.nextLine();
+                        myFlag=false;
+                    }
+                    try {
+                        notmy = scan.nextDouble();
+                    } catch (Exception e) {
+                        myFlag=true;
+                    }
+                } while (myFlag);
+
                 Double notms = null;
-                try {
-                    notms = scan.nextDouble();
-                } catch (InputMismatchException e) {
-                    e.printStackTrace();
-                }
+                boolean msFlag = false;
+                do {
+                    System.out.println("Lutfen mat icin sözlü notu giriniz");
+                    if (msFlag==true){
+                        scan.nextLine();
+                        msFlag=false;
+                    }
+                    try {
+                        notms = scan.nextDouble();
+                    } catch (Exception e) {
+                        msFlag=true;
+                    }
+                } while (msFlag);
+
                 System.out.println("Mat yazili notu: " + notmy + "\nMat sözlü notu: " + notms);
 
 
-                System.out.println("Lutfen bio icin yazili notu giriniz");
                 Double notby = null;
-                try {
-                    notby = scan.nextDouble();
-                } catch (InputMismatchException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Lutfen bio icin sözlü notu giriniz");
+                boolean byFlag= false;
+
+                do {
+                    System.out.println("Lutfen bio icin yazili notu giriniz");
+                    if (byFlag==true){
+                        scan.nextLine();
+                        byFlag=false;
+                    }
+                    try {
+                        notby = scan.nextDouble();
+                    } catch (Exception e) {
+                        byFlag=true;
+                    }
+                } while (byFlag);
+
                 Double notbs = null;
-                try {
-                    notbs = scan.nextDouble();
-                } catch (InputMismatchException e) {
-                    e.printStackTrace();
-                }
+                boolean bsFlag= false;
+
+                do {
+                    System.out.println("Lutfen bio icin sözlü notu giriniz");
+                    if (bsFlag==true){
+                        scan.nextLine();
+                        bsFlag=false;
+                    }
+                    try {
+                        notbs = scan.nextDouble();
+                    } catch (Exception e) {
+                        bsFlag=true;
+                    }
+                } while (bsFlag);
+
                 System.out.println("Bio yazili notu: " + notby + "\nBio sözlü notu: " + notbs);
 
 
-                System.out.println("Lutfen tur icin yazili notu giriniz");
-                Double notTy = scan.nextDouble();
-                System.out.println("Lutfen tur icin sözlü notu giriniz");
-                Double notTs = scan.nextDouble();
+                Double notTy= null;
+                boolean tyFlag= false;
+
+                do {
+                    System.out.println("Lutfen tur icin yazili notu giriniz");
+                    if (tyFlag==true){
+                        scan.nextLine();
+                        tyFlag=false;
+                    }
+                    try {
+                        notTy = scan.nextDouble();
+                    } catch (Exception e) {
+                        tyFlag=true;
+                    }
+                } while (tyFlag);
+
+                Double notTs= null;
+                boolean tsFlag= false;
+
+                do {
+                    System.out.println("Lutfen tur icin sözlü notu giriniz");
+                    if (tsFlag==true){
+                        scan.nextLine();
+                        tsFlag=false;
+                    }
+                    try {
+                        notTs = scan.nextDouble();
+                    } catch (Exception e) {
+                        tsFlag=true;
+                    }
+                } while (tsFlag);
+
                 System.out.println("Tur yazili notu: " + notTy + "\nTur sözlü notu: " + notTs);
 
 
