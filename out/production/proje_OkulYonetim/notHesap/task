@@ -3,12 +3,14 @@
 ----------Course Class Özellikleri :// mustafa erdem ve mustafa yılmaz
 
 fields (variable) : name,code,prefix,note,Teacher--> ad, ünvan, notYazılı, notSozlu, öğretmen,
-Methods : Course() , -> kurs(), öğretmenEkle(), öğretmenYazdır()
+Methods : Course()
+--> kurs()
 
 ----------Teacher Class Özellikleri : //Abdullah
 
 fields : name,branch--> ad, branş
-Methods : Teacher()-->öğretmen() addTeacher() , printTeacher()-
+Methods : Teacher() , addTeacher() , printTeacher()
+-->öğretmen(), öğretmenEkle(), öğretmenYazdır()
 
 ----------Student Class Özellikleri : // zeynep, defne
 
