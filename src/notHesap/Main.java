@@ -13,14 +13,14 @@ public class Main{
             String girilenDeger = "1";
             do {
                 System.out.println("" +
-                        "====================================\n" +
-                        "\t ÖĞRENCİ VE ÖĞRETMEN YÖNETİM PANELİ\n" +
-                        "\t====================================\n" +
+                        "    ======================================\n" +
+                        "\tÖĞRENCİ VE ÖĞRETMEN YÖNETİM PANELİ\n" +
+                        "\t======================================\n" +"\n"+
                         "\t 1- ÖĞRENCİ İŞLEMLERİ\n" +
                         "\t 2- ÖĞRETMEN İŞLEMLERİ\n" +
                         "\t 3- ÇIKIŞ"
                 );
-                System.out.print("Lütfen islemi giriniz: ");
+                System.out.print("\nLütfen islemi giriniz: ");
                 girilenDeger = scan.next();
 
                 switch (girilenDeger) {

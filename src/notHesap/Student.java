@@ -14,10 +14,11 @@ public class Student {
     public static void studentPaneli() {
 
         double cAvarage;
-        System.out.println("====================================\nOGRENCI YONETIM PANELI\n" +
-                "====================================\n"
+        System.out.println("===================================="+
+                         "\n       OGRENCI YONETIM PANELI\n" +
+                           "====================================\n"+ "\n"
                 + "1- ÖGRENCI EKLEME\n2- ÖĞRENCİ SİLME \n3- SINAV NOTU EKLEYİNİZ \n4- GECTİMİ \n5- ORTALAMA HESAPLAYINIZ \n6- NOTLARI YAZDIRINIZ\n7- ÖĞRENCİ LİSTESİ\nHERHANGİ BİR TUŞ- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
-        System.out.print("isleminiz seciniz : ");
+        System.out.print("\nisleminiz seciniz : ");
         String secim = scan.next().toUpperCase(Locale.ROOT);
         switch (secim) {
             case "1":
@@ -71,13 +72,14 @@ public class Student {
     private static void listeleme() {
         System.out.println("   *** öğrenci paneli   ***");
         Set<Map.Entry<String, depoStudent> > EntrySeti = ogrenciMap.entrySet();
-        System.out.println("------------------------ÖĞRENCİ LİSTESİ---------------------------------");
-        System.out.println("ÖĞRENCİNO   İSİMSOYİSİM     SINIFI      MATEMATİK   TÜRKÇE  BİYOLOJİ"+
-                "\n-----------------------------------------------------------------------");
+        System.out.println("----------------------------ÖĞRENCİ LİSTESİ------------------------------");
+        System.out.println("ÖĞRENCİNO    İSİM/SOYİSİM    SINIFI    MATEMATİK    TÜRKÇE    BİYOLOJİ"+
+                         "\n----------------------------------------------------------------------------"+
+                            "\n"+"\n");
         for (Map.Entry<String, depoStudent> e : EntrySeti
         ) {
             String entryKey = e.getKey();
-            System.out.printf("%-10s %-12s %-12s  %-10f %-10f %-10f\n",ogrenciMap.get(entryKey).getStuNo(), ogrenciMap.get(entryKey).getStudentName(), ogrenciMap.get(entryKey).getClasses(),ogrenciMap.get(entryKey).getMat(),ogrenciMap.get(entryKey).getTur(),ogrenciMap.get(entryKey).getBio());
+            System.out.printf("%-14s %-17s %-8s  %-13f %-10f %-10f\n",ogrenciMap.get(entryKey).getStuNo(), ogrenciMap.get(entryKey).getStudentName(), ogrenciMap.get(entryKey).getClasses(),ogrenciMap.get(entryKey).getMat(),ogrenciMap.get(entryKey).getTur(),ogrenciMap.get(entryKey).getBio());
         }
     }
 
