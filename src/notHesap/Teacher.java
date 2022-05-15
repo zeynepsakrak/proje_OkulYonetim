@@ -56,8 +56,8 @@ public class Teacher {
 //Methods : Student(), addBulkExamNote(), isPass(), calcAvarage(), printNote()
 //-->öğrenci(), topluSınavNotuEkle(), gectiMi() ortlamaHesapla(), notYazdır()
         System.out.println("===================================="+
-                         "\n      OGRETMEN YONETIM PANELI\n" +
-                           "====================================\n"+ "\n"
+                "\n      OGRETMEN YONETIM PANELI\n" +
+                "====================================\n"+ "\n"
                 + "1- ÖGRETMEN EKLE \n2- ÖGRETMEN LİSTELE \n3- OGRETMEN SIL\nHERHANGİ BİR TUŞ- ÖĞRETMEN PANELİNDEN ÇIKIŞ ");
         System.out.print("\nisleminiz seciniz : ");
         String secim = scan.next().toUpperCase(Locale.ROOT);

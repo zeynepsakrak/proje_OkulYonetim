@@ -15,8 +15,8 @@ public class Student {
 
         double cAvarage;
         System.out.println("===================================="+
-                         "\n       OGRENCI YONETIM PANELI\n" +
-                           "====================================\n"+ "\n"
+                "\n       OGRENCI YONETIM PANELI\n" +
+                "====================================\n"+ "\n"
                 + "1- ÖGRENCI EKLEME\n2- ÖĞRENCİ SİLME \n3- SINAV NOTU EKLEYİNİZ \n4- GECTİMİ \n5- ORTALAMA HESAPLAYINIZ \n6- NOTLARI YAZDIRINIZ\n7- ÖĞRENCİ LİSTESİ\nHERHANGİ BİR TUŞ- ÖĞRENCİ PANELİNDEN ÇIKIŞ ");
         System.out.print("\nisleminiz seciniz : ");
         String secim = scan.next().toUpperCase(Locale.ROOT);
@@ -26,11 +26,11 @@ public class Student {
                 studentPaneli();
                 break;
             case "2":
-               studentDelete();
-               studentPaneli();
+                studentDelete();
+                studentPaneli();
                 break;
             case "3":
-               sinavNotuEkle();
+                sinavNotuEkle();
                 studentPaneli();
                 break;
             case "4":
@@ -62,7 +62,7 @@ public class Student {
         String arananId = scan.next();
 
         if (ogrenciMap.keySet().contains(arananId)) {
-               ogrenciMap.remove(arananId);
+            ogrenciMap.remove(arananId);
             System.out.println("öğrenci bilgileri silinmiştir");
         } else {
             System.out.println("böyle bir öğrenci bulunamadığından silinemedi");
@@ -74,8 +74,8 @@ public class Student {
         Set<Map.Entry<String, depoStudent> > EntrySeti = ogrenciMap.entrySet();
         System.out.println("----------------------------ÖĞRENCİ LİSTESİ------------------------------");
         System.out.println("ÖĞRENCİNO    İSİM/SOYİSİM    SINIFI    MATEMATİK    TÜRKÇE    BİYOLOJİ"+
-                         "\n----------------------------------------------------------------------------"+
-                            "\n"+"\n");
+                "\n----------------------------------------------------------------------------"+
+                "\n"+"\n");
         for (Map.Entry<String, depoStudent> e : EntrySeti
         ) {
             String entryKey = e.getKey();
@@ -158,7 +158,7 @@ public class Student {
                 zFlag=true;
             }
         }while(zFlag);
-            sinavNotuEkle();
+        sinavNotuEkle();
 
     }
 
@@ -364,7 +364,7 @@ public class Student {
         String secim = scan.next().toUpperCase(Locale.ROOT);
         switch (secim) {
             case "1":
-              student();
+                student();
                 break;
             case "2":
                 studentDelete();
@@ -377,4 +377,3 @@ public class Student {
 
 
 }
-

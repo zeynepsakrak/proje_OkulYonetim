@@ -1,12 +1,13 @@
 package notHesap;
 
-public class depoStudent{
+public class depoStudent {
+
     private String studentName;
-   private  String stuNo;
-   private  String classes;
-   private  Double mat;
-   private  Double tur;
-   private  Double bio;
+    private  String stuNo;
+    private  String classes;
+    private  Double mat;
+    private  Double tur;
+    private  Double bio;
     private static double matSozluYuzde;
     private static double bioSozluYuzde;
     private static double turSozluYuzde;
@@ -82,7 +83,7 @@ public class depoStudent{
     }
 
     public static void setMatSozluYuzde(double matSozluYuzde) {
-        depoStudent.matSozluYuzde = matSozluYuzde;
+        notHesap.depoStudent.matSozluYuzde = matSozluYuzde;
     }
 
     public static double getBioSozluYuzde() {
@@ -90,7 +91,7 @@ public class depoStudent{
     }
 
     public static void setBioSozluYuzde(double bioSozluYuzde) {
-        depoStudent.bioSozluYuzde = bioSozluYuzde;
+        notHesap.depoStudent.bioSozluYuzde = bioSozluYuzde;
     }
 
     public static double getTurSozluYuzde() {
@@ -98,19 +99,21 @@ public class depoStudent{
     }
 
     public static void setTurSozluYuzde(double turSozluYuzde) {
-        depoStudent.turSozluYuzde = turSozluYuzde;
+        notHesap.depoStudent.turSozluYuzde = turSozluYuzde;
     }
 
     @Override
-  public String toString() {
-      return "ogrenciler" +
-              ", no='" + stuNo + '\'' +
-              ", Ismi='" + studentName + '\'' +
-              ", sınıfı='" + classes + '\'' +
-              ", Matematik notu='" + mat + '\'' +
-              ", Türkçe Notu='" + tur + '\'' +
-              ", Biyoloji Notu ='" + bio + '\'' +'\n' ;
-  }
+    public String toString() {
+        return "ogrenciler" +
+                ", no='" + stuNo + '\'' +
+                ", Ismi='" + studentName + '\'' +
+                ", sınıfı='" + classes + '\'' +
+                ", Matematik notu='" + mat + '\'' +
+                ", Türkçe Notu='" + tur + '\'' +
+                ", Biyoloji Notu ='" + bio + '\'' +'\n' ;
+    }
 
 
 }
+
+
